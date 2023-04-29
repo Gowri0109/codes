@@ -16,7 +16,7 @@ class Histrogram_equilizer:
         gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         #Histogram equilization
-        equilizer = cv2.equalizeHist(gray)
+        equilizer = cv2.equalizeHist(gray_img)
 
         #to show the difference
         cv2.imshow('Original', image)
