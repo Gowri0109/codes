@@ -24,5 +24,10 @@ class Histrogram_equilizer:
         cv2.waitKey(0)
         cv2.destroyAllWindows
 
-    
+#Segmentation using thresholding or ROI
+class segment:
+    def __init__(self, imagepath):
+        self.imagepath = imagepath
+
+        
        
