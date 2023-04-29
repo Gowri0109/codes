@@ -9,7 +9,7 @@ class Histrogram_equilizer:
     def __init__(self, imagepath):
         self.imagepath = imagepath
     
-    def equilize(self);
+    def equilize(self):
         image = cv2.imread(self.imagepath)
 
         #coversion of rgb image to grayscale
