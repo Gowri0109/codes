@@ -25,16 +25,16 @@ class Histrogram_equilizer:
 
 #function calling - Histogram equilization to enhance the denoised image quality to see the regions better
 if __name__ == '__main__':
-    input_folder = ""
-    output_folder = ""
+    input_folder = "D:\master_thesis\datasets\denoised\glioma"
+    output_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
 
 #histogram equilization 
 equilization = Histrogram_equilizer()
 
-for filename in os.listdire(input_folder):
+for filename in os.listdir(input_folder):
     if filename.endswith('.jpg') or filename.endswith('.png'):
-        image_path = os.path.join (input_folder, filename)
-        equilization.equilizer(image_path, output_folder)
+        image_path = os.path.join(input_folder, filename)
+        equilization.equilize(image_path, output_folder)
 
 
 
@@ -93,7 +93,7 @@ class segment:
 roi_selector = segment()
 
 #input and output folder path
-input_folder = "D:\master_thesis\datasets\denoised\glioma"
+input_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
 output_folder = "D:\master_thesis\datasets\segmented\glioma"
 i= ()
 
