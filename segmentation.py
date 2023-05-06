@@ -6,8 +6,8 @@ import pandas as pd
 
 #Histrogram equilization to enhance the images
 class Histrogram_equilizer:
-    def __init__(self, imagepath):
-        self.imagepath = imagepath
+    def __init__(self):
+        pass
     
     def equilize(self, image_path, output_folder):
         image = cv2.imread(image_path)
@@ -29,12 +29,12 @@ if __name__ == '__main__':
     output_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
 
 #histogram equilization 
-equilization = Histrogram_equilizer()
+equilization = Histrogram_equilizer(input_folder)
 
 for filename in os.listdir(input_folder):
     if filename.endswith('.jpg') or filename.endswith('.png'):
         image_path = os.path.join(input_folder, filename)
-        equilization.equilize(image_path, output_folder)
+        equilization.equilize(input_folder, output_folder)
 
 
 
