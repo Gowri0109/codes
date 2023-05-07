@@ -1,5 +1,10 @@
+import cv2
+import os
+import pandas as pd
+import numpy as np
+
 #Segmentation using thresholding or ROI
-class segment:
+class segment_roi:
     def __init__(self):
         self.image = None
         self.roi_pts = []
@@ -10,7 +15,7 @@ class segment:
         self.image = image
         clone = self.image.copy()
         cv2.namedWindow("Select ROI")
-        cv2.setMouseCallback("Select Roi",self.select_roi_callback)
+        cv2.setMouseCallback("Select Roi", self._select_roi_callback)
 
         while True:
             cv2.imshow("Select ROI", self._draw_roi(clone))
@@ -50,21 +55,23 @@ class segment:
 #funtion calling - to select the region of interest in the input data
 
 #create roi_selector object
-roi_selector = segment()
+roi_selector = segment_roi()
 
 #input and output folder path
 input_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
 output_folder = "D:\master_thesis\datasets\segmented\glioma"
-i= ()
+
 
 #loop over all the images in the input folder
-if i in os.listdir(input_folder):
+if filepath in os.listdir(input_folder):
+    #get filename from the filepath
+    filename = os.path.join(input_folder, filepath)
     #load images
-    image_path = os.path.join(input_folder, i)
+    image_path = os.path.join(input_folder, filename)
     image = cv2.imread(image_path)
 
 #to select the roi
-roi_pts = segment.select_roi(input_folder)
+roi_pts = segment_roi.select_roi(input_folder)
 
 #to extract roi
 if roi_pts is not None:
