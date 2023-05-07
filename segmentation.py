@@ -1,43 +1,3 @@
-import os
-import cv2
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-#Histrogram equilization to enhance the images
-class Histrogram_equilizer:
-    def __init__(self):
-        pass
-    
-    def equilize(self, image_path, output_folder):
-        image = cv2.imread(image_path)
-
-        #coversion of rgb image to grayscale
-        gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        #Histogram equilization
-        equilizer = cv2.equalizeHist(gray_img)
-
-        #to show the difference
-        ouput_path = os.path.join(output_folder, os.path.basename(image_path))
-        cv2.imwrite(output_folder, equilizer)
-
-
-#function calling - Histogram equilization to enhance the denoised image quality to see the regions better
-if __name__ == '__main__':
-    input_folder = "D:\master_thesis\datasets\denoised\glioma"
-    output_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
-
-#histogram equilization 
-equilization = Histrogram_equilizer(input_folder)
-
-for filename in os.listdir(input_folder):
-    if filename.endswith('.jpg') or filename.endswith('.png'):
-        image_path = os.path.join(input_folder, filename)
-        equilization.equilize(input_folder, output_folder)
-
-
-
 #Segmentation using thresholding or ROI
 class segment:
     def __init__(self):
@@ -116,6 +76,3 @@ if roi_pts is not None:
     cv2.imwrite(os.path.join(output_folder), roi_pts)
     #cv2.imshow("ROI", roi)
     cv2.waitKey(0)
-
-
-
