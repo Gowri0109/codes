@@ -29,8 +29,8 @@ class Histrogram_equilizer:
 
 #function calling - Histogram equilization to enhance the denoised image quality to see the regions better
 if __name__ == '__main__':
-    input_folder = "D:\master_thesis\datasets\denoised\glioma"
-    output_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
+    input_folder = "D:\\master_thesis\\datasets\\denoised\\normal"
+    output_folder = "D:\\master_thesis\\datasets\\histogram_equilization\\normal"
 
 #histogram equilization 
 equilization = Histrogram_equilizer()
