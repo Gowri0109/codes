@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 
-#Segmentation using thresholding or ROI
+#Segmentation using region of interest (ROI)
 class segment_roi:
     def __init__(self):
         self.image = None
@@ -33,7 +33,7 @@ class segment_roi:
             elif key ==27:
                 cv2.destroyWindow("Select ROI")
                 break
-        return None
+        return image
     
     def _select_roi_callback(self, event, x, y, flags, param):
         if event == cv2.EVENT_LBUTTONDOWN:
@@ -60,26 +60,33 @@ roi_selector = segment_roi()
 #input and output folder path
 input_folder = "D:\master_thesis\datasets\histogram_equilization\glioma"
 output_folder = "D:\master_thesis\datasets\segmented\glioma"
+filename = ()
 
+# Create output directory if it does not exist
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
 
 #loop over all the images in the input folder
-if filepath in os.listdir(input_folder):
+if filename in os.listdir(input_folder):
     #get filename from the filepath
-    filename = os.path.join(input_folder, filepath)
+    file_path = os.path.join(input_folder, filename)
     #load images
-    image_path = os.path.join(input_folder, filename)
-    image = cv2.imread(image_path)
+    image_path = cv2.imread(file_path)
 
-#to select the roi
-roi_pts = segment_roi.select_roi(input_folder)
+    #to select the roi
+    roi_pts = segment_roi.select_roi(image_path)
 
 #to extract roi
-if roi_pts is not None:
-    mask = np.zeros(image.shape[:2], dtype=np.unit8)
-    roi_corners = np.array(roi_pts,dtype=np.int32)
-    cv2.fillPoly(mask, [roi_corners], {255,255,255})
-    roi = cv2.bitwise_and(image, image, mask=mask)
-    #save in different folder
-    cv2.imwrite(os.path.join(output_folder), roi_pts)
-    #cv2.imshow("ROI", roi)
-    cv2.waitKey(0)
+    if roi_pts is not None:
+        mask = np.zeros(image_path.shape[:2], dtype=np.unit8)
+        roi_corners = np.array(roi_pts,dtype=np.int32)
+        cv2.fillPoly(mask, [roi_corners], {255,255,255})
+        roi = cv2.bitwise_and(image_path, image_path, mask=mask)
+        #save in different folder
+        for filename in os.listdir(input_folder):
+            if filename.endswith('.jpg') or filename.endswith('.png'):
+                output_path = os.path.join(input_folder, filename)
+                cv2.imwrite(os.path.join(output_folder), roi_pts)
+                print("Saved output image to:", output_path)
+                cv2.imshow("ROI", roi)
+                cv2.waitKey(0)
