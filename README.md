@@ -1,6 +1,7 @@
 **Image-Processing-for-Brain-Tumor-Classification-and-detection**
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 **REQUIREMENTS**
+
 Libraries
 - Pandas
 - Numpy
@@ -10,11 +11,14 @@ Libraries
 - Pillow
 - OpenCV
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 **Objective**
 
 In this work, we are focused on building a model to classify the types of brain tumors majorly into glioma, meningoma, and pituitary brain tumors.
 we have used two types of classifiers: RandomForest (ML) and Convolution Neural Network- CNN (DL)
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 **Workflow**
 
 1. Dataset collection
